@@ -1,0 +1,34 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	background-color: #11121d;
+	color: white;
+}
+
+.app-container {
+	min-height: 100vh;
+	text-align: center;
+}
+
+.add-project-button {
+	position: absolute;
+	right: 200px;
+	bottom: 200px;
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    justify-content: center; /* Center the columns horizontally */
+    align-items: center; /* Center the items vertically */
+    grid-auto-rows: auto; /* Automatically create rows based on content */
+    gap: 20px; /* Gap between grid items */
+    margin: 3rem 0rem;
+}
+
+.project {
+	margin: 0 auto;
+	width: 200px;
+	height: 200px;
+	background: white;
+}
