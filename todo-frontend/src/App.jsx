@@ -1,22 +1,23 @@
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './views/Home';
+import Project from './views/Project';
 
 function App() {
 
 	return (
-		<div className='app-container'>
+		<Router>
+			<div className='app-container'>
+				<h2 className="app-heading">Todo App</h2>
+				<Routes>
 
-			<h2 className="app-heading">Todo App</h2>
+					<Route exact path='/' element={<Home />} />
+					<Route path='project/:projectId' element={<Project />} />
 
-			<div className="project-container">
-				<div className="project">Project1</div>
-				<div className="project">Project2</div>
-				<div className="project">Project3</div>
-				<div className="project">Project4</div>
-				<div className="project">Project5</div>
+					{/* <div className="add-project-button"> + </div> */}
+				</Routes>
 			</div>
-
-			{/* <div className="add-project-button"> + </div> */}
-		</div>
+		</Router>
 	)
 }
 
