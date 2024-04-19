@@ -1,14 +1,17 @@
 import { useParams } from 'react-router-dom';
 import "../styles/Project.css";
+import Todo from './Todo';
 
 const Project = () => {
 	const { projectId } = useParams();
-	console.log("Id: ", projectId)
 
 	return (
-		<div className="project">
-			Echo: {projectId}
-		</div>
+		<>
+
+			<button style={{backgroundColor: 'green', width: '40px'}}>A</button>
+
+			<Todo projectId={projectId} />
+		</>
 	)
 }
 

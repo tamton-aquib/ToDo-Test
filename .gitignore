@@ -1,1 +1,9 @@
+### Frontend ###
 /todo-frontend/node_modules/
+
+### Backend ###
+/todo-backend/target/
+/todo-backend/.settings
+/todo-backend/.classpath
+/todo-backend/.factorypath
+/todo-backend/.project
