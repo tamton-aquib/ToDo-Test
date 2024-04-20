@@ -16,11 +16,11 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	private String title;
 	private Date createdDate;
 	private List<String> todoList;
 
-	public Project() {
-	}
+	public Project() {}
 
 }
