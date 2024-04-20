@@ -9,8 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Entity
 @Data
+@Entity
 public class Project {
 
 	@Id
@@ -18,11 +18,8 @@ public class Project {
 	private int id;
 
 	private String title;
-
 	private Date createdDate;
-
 	private List<String> todoList;
-
 	public Project() {}
 
 }

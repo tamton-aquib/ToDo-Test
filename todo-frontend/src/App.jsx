@@ -4,6 +4,7 @@ import Home from './views/Home';
 import Project from './views/Project';
 import { Button, Modal, TextField } from '@mui/material';
 import { useState } from 'react';
+import { ContextProvider } from './contexts/ProjectContext';
 
 function App() {
 	const [open, setOpen] = useState(false);
@@ -35,51 +36,53 @@ function App() {
 	}
 
 	return (
-		<Router>
-			<div className='app-container'>
-				<h2 className="app-heading">Todo App</h2>
+		<ContextProvider>
+			<Router>
+				<div className='app-container'>
+					<h2 className="app-heading">Todo App</h2>
 
-				<Routes>
-					<Route exact path='/' element={<Home />} />
-					<Route path='project/:projectId' element={<Project />} />
-				</Routes>
+					<Routes>
+						<Route exact path='/' element={<Home />} />
+						<Route path='project/:projectId' element={<Project />} />
+					</Routes>
 
-				<Modal
-					open={open}
-					onClose={handleClose}
-					aria-labelledby="modal-modal-title"
-					aria-describedby="modal-modal-description"
-					className='add-project-modal'
-					>
+					<Modal
+						open={open}
+						onClose={handleClose}
+						aria-labelledby="modal-modal-title"
+						aria-describedby="modal-modal-description"
+						className='add-project-modal'
+						>
 
-					<form>
-						<TextField
-							required
-							id="project-title"
-							label="Project Title"
-							variant="outlined"
-							margin="normal"
-							fullWidth
-							value={inputValue}
-							onChange={(e) => setInputValue(e.target.value)}
-						/>
+						<form>
+							<TextField
+								required
+								id="project-title"
+								label="Project Title"
+								variant="outlined"
+								margin="normal"
+								fullWidth
+								value={inputValue}
+								onChange={(e) => setInputValue(e.target.value)}
+							/>
 
-						<Button
-							variant="contained" type="submit" sx={{ mt: 2, width: '100%' }}
-							onClick={handleSubmit}
-							>
-							Submit
-						</Button>
-					</form>
+							<Button
+								variant="contained" type="submit" sx={{ mt: 2, width: '100%' }}
+								onClick={handleSubmit}
+								>
+								Submit
+							</Button>
+						</form>
 
-				</Modal>
+					</Modal>
 
-				<div className="add-project-button">
-					<Button onClick={handleOpen}>+</Button>
+					<div className="add-project-button">
+						<Button onClick={handleOpen}>+</Button>
+					</div>
+
 				</div>
-
-			</div>
-		</Router>
+			</Router>
+		</ContextProvider>
 	)
 }
 

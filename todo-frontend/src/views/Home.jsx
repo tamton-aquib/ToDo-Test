@@ -1,16 +1,10 @@
 import { Link } from "react-router-dom";
 import "../styles/Project.css";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ProjectContext } from "../contexts/ProjectContext";
 
 const Home = () => {
-	const [projects, setProjects] = useState([]);
-
-	useEffect(() => {
-		fetch("http://localhost:8080/project/getProjects")
-			.then(response => response.json())
-			.then(setProjects)
-			.catch(error => console.error("Error fetching projects:", error));
-	}, []);
+	const { projects } = useContext(ProjectContext);
 
 	return (
 		<div className="project-container">
