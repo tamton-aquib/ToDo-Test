@@ -1,13 +1,21 @@
+import { Button } from "@mui/material";
 
-const Todo = ({ projectId }) => {
+const Todo = ({ project }) => {
+	console.log("Project: ", project);
+
 	return (
 		<>
-			<div>
-				Todo Description for projectId: {projectId}.
-			</div>
+			{project.todoList.map(todo => {
+				return (
+					<div key={todo} style={{backgroundColor: 'black', color:  'white'}}>
+						<div> {todo} </div>
 
-			<button style={{backgroundColor: 'orange', width: '40px'}}>E</button>
-			<button style={{backgroundColor: 'red', width: '40px'}}>D</button>
+						<Button color="warning">Edit</Button>
+						<Button color="error">Delete</Button>
+					</div>
+				);
+
+			})}
 		</>
 	)
 }

@@ -53,7 +53,7 @@ const Project = () => {
 					<Button onClick={toggleTodoButton}>Add</Button>
 			}
 
-			<Todo projectId={projectId} />
+			<Todo project={currentProject} />
 		</>
 	)
 }
