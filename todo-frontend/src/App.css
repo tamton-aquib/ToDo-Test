@@ -7,3 +7,9 @@
 	min-height: 100vh;
 	text-align: center;
 }
+
+.add-project-modal {
+	margin: 50px;
+	background-color: white;
+	box-shadow: white;
+}

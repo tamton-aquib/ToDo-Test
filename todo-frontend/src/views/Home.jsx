@@ -1,25 +1,28 @@
 import { Link } from "react-router-dom";
 import "../styles/Project.css";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+	const [projects, setProjects] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:8080/project/getProjects")
+			.then(response => response.json())
+			.then(setProjects)
+			.catch(error => console.error("Error fetching projects:", error));
+	}, []);
 
 	return (
 		<div className="project-container">
-			<Link to={`/project/1`}>
-				<div className="projectile">1</div>
-			</Link>
-			<Link to={`/project/2`}>
-				<div className="projectile">2</div>
-			</Link>
-			<Link to={`/project/3`}>
-				<div className="projectile">3</div>
-			</Link>
-			<Link to={`/project/4`}>
-				<div className="projectile">4</div>
-			</Link>
-			<Link to={`/project/5`}>
-				<div className="projectile">5</div>
-			</Link>
+			{ projects.map(project => {
+				return (
+					<div key={project.id} className="projectile">
+						<Link to={`/project/${project.id}`}>
+							{project.id}
+						</Link>
+					</div>
+				)
+			}) }
 		</div>
 	)
 }
