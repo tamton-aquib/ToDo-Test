@@ -10,6 +10,7 @@ import com.taj.ToDo.model.Project;
 public interface ProjectService {
 
 	public Project saveProject(Project project);
+	public Project updateProject(Project project);
 	public List<Project> getProjects();
 
 }

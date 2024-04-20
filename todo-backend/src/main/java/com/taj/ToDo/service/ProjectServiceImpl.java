@@ -20,7 +20,13 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
+	public Project updateProject(Project project) {
+		throw new UnsupportedOperationException("Unimplemented method 'updateProject'");
+	}
+
+	@Override
 	public List<Project> getProjects() {
 		return projectRepository.findAll();
 	}
+
 }
