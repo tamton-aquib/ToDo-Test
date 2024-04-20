@@ -1,5 +1,7 @@
 package com.taj.ToDo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public Project saveProject(Project project) {
 		return projectRepository.save(project);
+	}
+
+	@Override
+	public List<Project> getProjects() {
+		return projectRepository.findAll();
 	}
 }
