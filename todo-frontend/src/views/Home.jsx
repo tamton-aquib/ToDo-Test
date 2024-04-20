@@ -12,7 +12,7 @@ const Home = () => {
 				return (
 					<div key={project.id} className="projectile">
 						<Link to={`/project/${project.id}`}>
-							{project.id}
+							{project.title}
 						</Link>
 					</div>
 				)

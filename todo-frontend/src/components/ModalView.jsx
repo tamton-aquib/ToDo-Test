@@ -9,7 +9,6 @@ const ModalView = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		console.log("InputValue: ", inputValue);
 		fetch('http://localhost:8080/project/add', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
