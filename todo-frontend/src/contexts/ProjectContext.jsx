@@ -4,6 +4,14 @@ const ProjectContext = createContext([]);
 
 const ContextProvider = ({ children }) => {
 	const [projects, setProjects] = useState([]);
+	const [modalOpen, setModalOpen] = useState(false);
+
+	const handleModalOpen = () => {
+		setModalOpen(true);
+	}
+	const handleModalClose = () => {
+		setModalOpen(false);
+	}
 
 	useEffect(() => {
 		fetch("http://localhost:8080/project/getProjects")
@@ -13,7 +21,7 @@ const ContextProvider = ({ children }) => {
 	}, []);
 
 	return (
-		<ProjectContext.Provider value={{projects, setProjects}}>
+		<ProjectContext.Provider value={{projects, setProjects, modalOpen, handleModalClose, handleModalOpen}}>
 			{ children }
 		</ProjectContext.Provider>
 	);
