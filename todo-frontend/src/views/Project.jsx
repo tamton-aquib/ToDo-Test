@@ -9,12 +9,12 @@ const Project = () => {
 	// PERF: The whole component gets re-rendered when changing input somehow.
 	const { projectId } = useParams();
 	const { projects } = useContext(ProjectContext);
+
 	const [insertTodo, setInsertTodo] = useState(false);
 	const [input, setInput] = useState('');
 	const [currentProject, setCurrentProject] = useState();
 	const [projectTitle, setProjectTitle] = useState();
 	const [changeProjectTitle, setChangeProjectTitle] = useState(false);
-	console.log("currentProject: ", currentProject);
 
 	useEffect(() => {
 		setCurrentProject(projects.find(p => p.id == projectId));
@@ -100,7 +100,7 @@ const Project = () => {
 				}
 			</div>
 
-			{currentProject?.todoList?.map(todo => <Todo key={todo.id} todo={todo} />)}
+			{currentProject?.todoList?.map(todo => <Todo key={todo.id} project={currentProject} todo={todo} />)}
 		</>
 	)
 }
