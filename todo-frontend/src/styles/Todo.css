@@ -1,5 +1,13 @@
 .todo-tile {
-	background-color: black;
-	color: white;
 	margin: 10px 10px;
+	border: 0.5px solid black;
+}
+
+.todo-description {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin-inline: 10px;
+	gap: 10px;
 }

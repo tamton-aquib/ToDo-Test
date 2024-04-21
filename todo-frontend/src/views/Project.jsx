@@ -17,8 +17,9 @@ const Project = () => {
 	const [changeProjectTitle, setChangeProjectTitle] = useState(false);
 
 	useEffect(() => {
-		setCurrentProject(projects.find(p => p.id == projectId));
-		setProjectTitle(currentProject?.title);
+		const p = projects.find(p => p.id == projectId);
+		setCurrentProject(p);
+		setProjectTitle(p?.title);
 	}, [projects])
 
 	const toggleTodoButton = () => setInsertTodo(p => !p);
@@ -68,6 +69,7 @@ const Project = () => {
 			}).finally(() => console.log("After put"))
 
 		setChangeProjectTitle(p => !p);
+		setInput('');
 	}
 
 	return (
@@ -75,7 +77,7 @@ const Project = () => {
 			{
 				changeProjectTitle ?
 					<>
-						<Input value={projectTitle} onChange={handleProjectTitleChange} />
+						<Input autoFocus value={projectTitle} onChange={handleProjectTitleChange} />
 						<Button onClick={submitProjectTitle}>Submit</Button>
 					</>
 					:
@@ -90,7 +92,7 @@ const Project = () => {
 					insertTodo ?
 						(
 							<span>
-								<Input value={input} onChange={handleInputChange} />
+								<Input autoFocus value={input} onChange={handleInputChange} />
 								<Button color='primary' onClick={addTodo}>SUMBIT</Button>
 								<Button color='secondary' onClick={toggleTodoButton}>CANCEL</Button>
 							</span>

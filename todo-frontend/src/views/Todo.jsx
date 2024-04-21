@@ -1,10 +1,11 @@
-import { Button, Input } from "@mui/material";
+import { Button, Checkbox, Input } from "@mui/material";
 import "../styles/Todo.css";
 import { useState } from "react";
 
 const Todo = ({ todo, project }) => {
 	const [toggleEditTodo, setToggleEditTodo] = useState(false);
 	const [todoDescription, setTodoDescription] = useState(todo.description);
+	const [checked, setChecked] = useState(todo.status === "COMPLETED");
 
 	const deleteTodo = () => {
 		if (todo.id) {
@@ -34,16 +35,36 @@ const Todo = ({ todo, project }) => {
 		setToggleEditTodo(p => !p);
 	}
 
+	const handleOnChange = (e) => {
+		setChecked(e.target.checked);
+
+		const dataToUpdate = {
+			...todo,
+			status: e.target.checked ? "COMPLETED" : "PENDING",
+			updatedDate: Date.now(),
+			project: { id: project.id }
+		}
+		fetch('http://localhost:8080/todo/update', {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(dataToUpdate)
+			}).finally(() => console.log("After Todo put"))
+	}
+
 	return (
 		<div className="todo-tile">
-			{
-				toggleEditTodo ?
-					<div>
-						<Input style={{backgroundColor: 'white'}} value={todoDescription} onChange={(e) => setTodoDescription(e.target.value)} />
-					</div>
-					:
-					<div>{todoDescription}</div>
-			}
+			<div className="todo-description">
+				<Checkbox onChange={handleOnChange} checked={checked} />
+
+				{
+					toggleEditTodo ?
+						<div>
+							<Input autoFocus value={todoDescription} onChange={(e) => setTodoDescription(e.target.value)} />
+						</div>
+						:
+						<div>{todoDescription}</div>
+				}
+			</div>
 
 			{
 
