@@ -1,23 +1,16 @@
 import { Button } from "@mui/material";
+import "../styles/Todo.css";
 
-const Todo = ({ project }) => {
-	console.log("Project: ", project);
+const Todo = ({ todo }) => {
 
 	return (
-		<>
-			{project?.todoList?.map(todo => {
-				return (
-					<div key={todo.id} style={{backgroundColor: 'black', color:  'white'}}>
-						<div> {todo.description} </div>
+		<div className="todo-tile">
+			<div> {todo.description} </div>
 
-						<Button color="warning">Edit</Button>
-						<Button color="error">Delete</Button>
-					</div>
-				);
-
-			})}
-		</>
-	)
+			<Button color="warning">Edit</Button>
+			<Button color="error">Delete</Button>
+		</div>
+	);
 }
 
 export default Todo;

@@ -12,6 +12,8 @@ function App() {
 				<div className='app-container'>
 					<h2 className="app-heading">Todo App</h2>
 
+					<div id='divider'></div>
+
 					<Routes>
 						<Route exact path='/' element={<Home />} />
 						<Route path='project/:projectId' element={<Project />} />

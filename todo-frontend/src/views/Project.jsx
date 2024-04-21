@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import "../styles/Project.css";
 import Todo from './Todo';
 import { Button, Input } from '@mui/material';
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
 
 const Project = () => {
@@ -11,7 +11,8 @@ const Project = () => {
 	const { projects } = useContext(ProjectContext);
 	const [insertTodo, setInsertTodo] = useState(false);
 	const [input, setInput] = useState('');
-	const currentProject = projects.find(p => p.id == projectId);
+	const [currentProject, setCurrentProject] = useState(projects.find(p => p.id == projectId));
+	console.log("currentProject: ", currentProject);
 
 	const toggleTodoButton = () => setInsertTodo(p => !p);
 
@@ -38,11 +39,15 @@ const Project = () => {
 			body: JSON.stringify(dataToUpdate)
 		}).finally(() => console.log("After post"))
 
+		setCurrentProject(p => ({...p, todoList: [...p.todoList, dataToUpdate]}))
+
 		toggleTodoButton();
 	}
 
 	return (
 		<>
+			<h3>{currentProject?.title}</h3>
+
 			{
 				insertTodo ?
 					(
@@ -56,7 +61,7 @@ const Project = () => {
 					<Button onClick={toggleTodoButton}>Add</Button>
 			}
 
-			<Todo project={currentProject} />
+			{ currentProject?.todoList?.map(todo => <Todo key={todo.id} todo={todo} />) }
 		</>
 	)
 }
