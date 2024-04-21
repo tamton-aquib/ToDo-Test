@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import "../styles/Project.css";
 import Todo from './Todo';
-import { Button, Input } from '@mui/material';
+import { Button, IconButton, Input } from '@mui/material';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
+import { Create, Draw } from '@mui/icons-material';
 
 const Project = () => {
 	// PERF: The whole component gets re-rendered when changing input somehow.
@@ -83,7 +84,11 @@ const Project = () => {
 					:
 					<span>
 						<span>{projectTitle}</span>
-						<span onClick={() => setChangeProjectTitle(p => !p)}>✏️ </span>
+						<span onClick={() => setChangeProjectTitle(p => !p)}>
+							<IconButton>
+								<Create fontSize='10' />
+							</IconButton>
+						</span>
 					</span>
 			}
 

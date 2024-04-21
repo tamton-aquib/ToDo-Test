@@ -62,7 +62,7 @@ const Todo = ({ todo, project }) => {
 							<Input autoFocus value={todoDescription} onChange={(e) => setTodoDescription(e.target.value)} />
 						</div>
 						:
-						<div>{todoDescription}</div>
+						<div style={{textDecoration: checked ? 'line-through' : 'none'}}>{todoDescription}</div>
 				}
 			</div>
 

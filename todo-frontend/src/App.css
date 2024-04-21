@@ -1,11 +1,17 @@
 * {
 	margin: 0px;
 	padding: 0px;
+	font-family: Poppins, 'Courier New', Courier, monospace;
+}
+
+.app-heading {
+	padding: 10px 0px;
+	text-align: center;
+	box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.75);
 }
 
 .app-container {
 	min-height: 100vh;
-	text-align: center;
 	background-color: #dddde7;
 	color: #202023;
 }
