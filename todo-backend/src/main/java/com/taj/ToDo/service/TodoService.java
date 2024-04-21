@@ -12,5 +12,6 @@ public interface TodoService {
 	public Todo saveTodo(Todo todo);
 	public Todo updateTodo(Todo todo);
 	public List<Todo> getTodos();
+	public String deleteTodo(Integer id);
 
 }

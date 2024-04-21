@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import "../styles/Project.css";
 import Todo from './Todo';
 import { Button, Input } from '@mui/material';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
 
 const Project = () => {

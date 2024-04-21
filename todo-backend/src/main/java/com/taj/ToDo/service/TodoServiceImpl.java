@@ -29,4 +29,11 @@ public class TodoServiceImpl implements TodoService {
 		return todoRepository.findAll();
 	}
 
+	@Override
+	public String deleteTodo(Integer id) {
+		Todo foundTodo = todoRepository.findById(id).get();
+		todoRepository.delete(foundTodo);
+		return "Todo Deleted!";
+	}
+
 }
