@@ -6,6 +6,8 @@
 .app-container {
 	min-height: 100vh;
 	text-align: center;
+	background-color: #dddde7;
+	color: #202023;
 }
 
 .add-project-modal {
@@ -18,4 +20,9 @@
 	height: 5px;
 	width: 100%;
 	background-color: black;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: inherit;
 }

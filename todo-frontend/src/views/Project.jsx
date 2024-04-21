@@ -98,7 +98,10 @@ const Project = () => {
 							</span>
 						)
 						:
-						<Button onClick={toggleTodoButton}>Add</Button>
+						<Button onClick={() => {
+							toggleTodoButton()
+							setInput('');
+					}}>Add</Button>
 				}
 			</div>
 

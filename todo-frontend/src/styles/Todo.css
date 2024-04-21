@@ -1,6 +1,7 @@
 .todo-tile {
-	margin: 10px 10px;
+	margin: 10px 50px;
 	border: 0.5px solid black;
+	border-radius: 8px;
 }
 
 .todo-description {

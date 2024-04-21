@@ -56,7 +56,7 @@ const ModalView = () => {
 			</Modal>
 
 			<div className="add-project-button">
-				<Button onClick={handleModalOpen}>+</Button>
+				<Button variant="contained" onClick={handleModalOpen}>+</Button>
 			</div>
 		</>
 	)

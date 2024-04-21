@@ -16,10 +16,9 @@
 .projectile {
 	height: 100px;
 	width: 100%;
-	background-color: #11121d;
-	color: white;
-	text-decoration: none;
 	margin: 10px 0px;
+	border: 0.5px solid black;
+	border-radius: 8px;
 }
 
 .project {

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './views/Home';
 import Project from './views/Project';
 import { ContextProvider } from './contexts/ProjectContext';
@@ -10,7 +10,9 @@ function App() {
 		<ContextProvider>
 			<Router>
 				<div className='app-container'>
-					<h2 className="app-heading">Todo App</h2>
+					<Link to={"/"} className='nav-link'>
+						<h2 className="app-heading">Todo App</h2>
+					</Link>
 
 					<div id='divider'></div>
 
