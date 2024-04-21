@@ -2,17 +2,21 @@ import { useParams } from 'react-router-dom';
 import "../styles/Project.css";
 import Todo from './Todo';
 import { Button, Input } from '@mui/material';
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
 
 const Project = () => {
-	/// PERF: The whole component gets re-rendered when changing input somehow.
+	// PERF: The whole component gets re-rendered when changing input somehow.
 	const { projectId } = useParams();
 	const { projects } = useContext(ProjectContext);
 	const [insertTodo, setInsertTodo] = useState(false);
 	const [input, setInput] = useState('');
-	const [currentProject, setCurrentProject] = useState(projects.find(p => p.id == projectId));
+	const [currentProject, setCurrentProject] = useState();
 	console.log("currentProject: ", currentProject);
+
+	useEffect(() => {
+		setCurrentProject(projects.find(p => p.id == projectId));
+	}, [projects])
 
 	const toggleTodoButton = () => setInsertTodo(p => !p);
 
@@ -61,7 +65,7 @@ const Project = () => {
 					<Button onClick={toggleTodoButton}>Add</Button>
 			}
 
-			{ currentProject?.todoList?.map(todo => <Todo key={todo.id} todo={todo} />) }
+			{currentProject?.todoList?.map(todo => <Todo key={todo.id} todo={todo} />)}
 		</>
 	)
 }
