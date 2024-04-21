@@ -1,6 +1,6 @@
 package com.taj.ToDo.model;
 
-enum TodoStatus {
+public enum TodoStatus {
 	PENDING,
 	COMPLETED
 }

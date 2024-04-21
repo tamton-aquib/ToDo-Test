@@ -3,7 +3,7 @@ package com.taj.ToDo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.taj.ToDo.model.Project;
+import com.taj.ToDo.model.Todo;
 
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, Integer> {}
+public interface TodoRepository extends JpaRepository<Todo, Integer> {}

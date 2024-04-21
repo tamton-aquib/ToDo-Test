@@ -16,12 +16,12 @@ const ContextProvider = ({ children }) => {
 	useEffect(() => {
 		fetch("http://localhost:8080/project/getProjects")
 			.then(response => response.json())
-			.then(setProjects)
+			.then(ps => setProjects(ps))
 			.catch(error => console.error("Error fetching projects:", error));
 	}, []);
 
 	return (
-		<ProjectContext.Provider value={{projects, setProjects, modalOpen, handleModalClose, handleModalOpen}}>
+		<ProjectContext.Provider value={{ projects, setProjects, modalOpen, handleModalClose, handleModalOpen }}>
 			{ children }
 		</ProjectContext.Provider>
 	);

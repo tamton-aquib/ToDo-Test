@@ -23,14 +23,17 @@ const Project = () => {
 		e.preventDefault();
 
 		const dataToUpdate = {
-			...currentProject,
-			id: projectId,
-			title: currentProject.title,
-			todoList: [...currentProject.todoList, input]
+			createdDate: Date.now(),
+			updatedDate: Date.now(),
+			description: input,
+			status: "PENDING",
+			project: {
+				id: parseInt(projectId)
+			}
 		}
 
-		fetch('http://localhost:8080/project/update', {
-			method: 'PUT',
+		fetch('http://localhost:8080/todo/add', {
+			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(dataToUpdate)
 		}).finally(() => console.log("After post"))
@@ -45,8 +48,8 @@ const Project = () => {
 					(
 						<span>
 							<Input value={input} onChange={handleInputChange} />
-							<Button onClick={addTodo}>SUMBIT</Button>
-							<Button onClick={toggleTodoButton}>CANCEL</Button>
+							<Button color='primary' onClick={addTodo}>SUMBIT</Button>
+							<Button color='secondary' onClick={toggleTodoButton}>CANCEL</Button>
 						</span>
 					)
 					:

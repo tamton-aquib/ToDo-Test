@@ -5,10 +5,10 @@ const Todo = ({ project }) => {
 
 	return (
 		<>
-			{project.todoList.map(todo => {
+			{project?.todoList?.map(todo => {
 				return (
-					<div key={todo} style={{backgroundColor: 'black', color:  'white'}}>
-						<div> {todo} </div>
+					<div key={todo.id} style={{backgroundColor: 'black', color:  'white'}}>
+						<div> {todo.description} </div>
 
 						<Button color="warning">Edit</Button>
 						<Button color="error">Delete</Button>

@@ -8,7 +8,7 @@ const Home = () => {
 
 	return (
 		<div className="project-container">
-			{ projects.map(project => {
+			{ projects?.map(project => {
 				return (
 					<div key={project.id} className="projectile">
 						<Link to={`/project/${project.id}`}>
