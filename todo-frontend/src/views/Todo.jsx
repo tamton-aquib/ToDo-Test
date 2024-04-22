@@ -40,6 +40,7 @@ const Todo = ({ todo, project }) => {
 
 		const dataToUpdate = {
 			...todo,
+			id: todo.id,
 			status: e.target.checked ? "COMPLETED" : "PENDING",
 			updatedDate: Date.now(),
 			project: { id: project.id }

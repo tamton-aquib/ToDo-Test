@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import "../styles/Project.css";
 import { useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
-import { Box, Card, IconButton, Typography } from "@mui/material";
-import { Download } from "@mui/icons-material";
+import { Box, Card, Typography } from "@mui/material";
+import ExportButton from "../components/ExportButton";
 
 const Home = () => {
 	const { projects } = useContext(ProjectContext);
@@ -28,9 +28,7 @@ const Home = () => {
 						</span>
 
 						<div className="export-icon">
-							<IconButton style={{height: '50%'}} aria-label="Export as Gist">
-								<Download />
-							</IconButton>
+							<ExportButton project={project} />
 						</div>
 					</Card>
 				)
