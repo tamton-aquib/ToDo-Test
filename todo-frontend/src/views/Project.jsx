@@ -4,7 +4,7 @@ import Todo from './Todo';
 import { Button, IconButton, Input } from '@mui/material';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
-import { Create, Draw } from '@mui/icons-material';
+import { Create } from '@mui/icons-material';
 
 const Project = () => {
 	// PERF: The whole component gets re-rendered when changing input somehow.
@@ -75,39 +75,41 @@ const Project = () => {
 
 	return (
 		<>
-			{
-				changeProjectTitle ?
-					<>
-						<Input autoFocus value={projectTitle} onChange={handleProjectTitleChange} />
-						<Button onClick={submitProjectTitle}>Submit</Button>
-					</>
-					:
-					<span>
-						<span>{projectTitle}</span>
-						<span onClick={() => setChangeProjectTitle(p => !p)}>
-							<IconButton>
-								<Create fontSize='10' />
-							</IconButton>
-						</span>
-					</span>
-			}
-
-			<div>
+			<div className='project-page-top-elements'>
 				{
-					insertTodo ?
-						(
-							<span>
-								<Input autoFocus value={input} onChange={handleInputChange} />
-								<Button color='primary' onClick={addTodo}>SUMBIT</Button>
-								<Button color='secondary' onClick={toggleTodoButton}>CANCEL</Button>
-							</span>
-						)
+					changeProjectTitle ?
+						<>
+							<Input autoFocus value={projectTitle} onChange={handleProjectTitleChange} />
+							<Button onClick={submitProjectTitle}>Submit</Button>
+						</>
 						:
-						<Button onClick={() => {
-							toggleTodoButton()
-							setInput('');
-					}}>Add</Button>
+						<span>
+							<span>{projectTitle}</span>
+							<span onClick={() => setChangeProjectTitle(p => !p)}>
+								<IconButton>
+									<Create fontSize='10' />
+								</IconButton>
+							</span>
+						</span>
 				}
+
+				<div>
+					{
+						insertTodo ?
+							(
+								<span>
+									<Input autoFocus value={input} onChange={handleInputChange} />
+									<Button color='primary' onClick={addTodo}>SUMBIT</Button>
+									<Button color='secondary' onClick={toggleTodoButton}>CANCEL</Button>
+								</span>
+							)
+							:
+							<Button onClick={() => {
+								toggleTodoButton()
+								setInput('');
+						}}>Add</Button>
+					}
+				</div>
 			</div>
 
 			{currentProject?.todoList?.map(todo => <Todo key={todo.id} project={currentProject} todo={todo} />)}

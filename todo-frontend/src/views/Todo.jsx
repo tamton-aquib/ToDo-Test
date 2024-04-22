@@ -66,14 +66,16 @@ const Todo = ({ todo, project }) => {
 				}
 			</div>
 
-			{
+			<div className="todo-edit-save-cancel">
+				{
 
-				toggleEditTodo ?
-					<Button onClick={submitUpdatedTodo} color="warning">Save</Button>
-					:
-					<Button onClick={() => setToggleEditTodo(p => !p)} color="warning">Edit</Button>
-			}
-			<Button color="error" onClick={deleteTodo}>Delete</Button>
+					toggleEditTodo ?
+						<Button onClick={submitUpdatedTodo} color="warning">Save</Button>
+						:
+						<Button onClick={() => setToggleEditTodo(p => !p)} color="warning">Edit</Button>
+				}
+				<Button color="error" onClick={deleteTodo}>Delete</Button>
+			</div>
 		</div>
 	);
 }
