@@ -1,6 +1,7 @@
 import { Button, TextField, Modal } from "@mui/material";
 import { useState, useContext } from "react";
 import { ProjectContext } from "../contexts/ProjectContext";
+import "../styles/ModalView.css";
 
 const ModalView = () => {
 	const {modalOpen, handleModalOpen, handleModalClose, setProjects} = useContext(ProjectContext);
@@ -55,9 +56,7 @@ const ModalView = () => {
 				</form>
 			</Modal>
 
-			<div className="add-project-button">
-				<Button variant="contained" onClick={handleModalOpen}>+</Button>
-			</div>
+			<Button className="add-project-button" variant="contained" onClick={handleModalOpen}>+</Button>
 		</>
 	)
 

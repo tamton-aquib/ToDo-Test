@@ -1,8 +1,12 @@
 import { Button, Checkbox, Input } from "@mui/material";
 import "../styles/Todo.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ProjectContext } from "../contexts/ProjectContext";
 
-const Todo = ({ todo, project }) => {
+const Todo = ({ todoId, project }) => {
+	const todo = project.todoList.find(t => t.id == todoId);
+	console.log("Nice: ", todo);
+	const { setTriggerRefetch } = useContext(ProjectContext);
 	const [toggleEditTodo, setToggleEditTodo] = useState(false);
 	const [todoDescription, setTodoDescription] = useState(todo.description);
 	const [checked, setChecked] = useState(todo.status === "COMPLETED");
@@ -18,6 +22,7 @@ const Todo = ({ todo, project }) => {
 	}
 
 	const submitUpdatedTodo = () => {
+		console.log("Todo Id on submit: ", todo.id)
 		const dataToUpdate = {
 			...todo,
 			id: todo.id,
@@ -33,9 +38,10 @@ const Todo = ({ todo, project }) => {
 			}).finally(() => console.log("After Todo put"))
 
 		setToggleEditTodo(p => !p);
+		setTriggerRefetch(p => !p);
 	}
 
-	const handleOnChange = (e) => {
+	const handleCheckBoxChange = (e) => {
 		setChecked(e.target.checked);
 
 		const dataToUpdate = {
@@ -50,12 +56,14 @@ const Todo = ({ todo, project }) => {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(dataToUpdate)
 			}).finally(() => console.log("After Todo put"))
+
+		console.log("Todo id on checkboxchange: ", todo.id)
 	}
 
 	return (
 		<div className="todo-tile">
 			<div className="todo-description">
-				<Checkbox onChange={handleOnChange} checked={checked} />
+				<Checkbox onChange={handleCheckBoxChange} checked={checked} />
 
 				{
 					toggleEditTodo ?

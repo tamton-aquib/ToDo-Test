@@ -22,6 +22,7 @@ function App() {
 					</Routes>
 
 					<ModalView />
+
 				</div>
 			</Router>
 		</ContextProvider>

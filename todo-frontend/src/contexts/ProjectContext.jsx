@@ -5,6 +5,7 @@ const ProjectContext = createContext([]);
 const ContextProvider = ({ children }) => {
 	const [projects, setProjects] = useState([]);
 	const [modalOpen, setModalOpen] = useState(false);
+	const [triggerRefetch, setTriggerRefetch] = useState(false);
 
 	const handleModalOpen = () => {
 		setModalOpen(true);
@@ -18,10 +19,10 @@ const ContextProvider = ({ children }) => {
 			.then(response => response.json())
 			.then(ps => setProjects(ps))
 			.catch(error => console.error("Error fetching projects:", error));
-	}, []);
+	}, [triggerRefetch]);
 
 	return (
-		<ProjectContext.Provider value={{ projects, setProjects, modalOpen, handleModalClose, handleModalOpen }}>
+		<ProjectContext.Provider value={{ projects, setProjects, modalOpen, handleModalClose, handleModalOpen, setTriggerRefetch }}>
 			{ children }
 		</ProjectContext.Provider>
 	);

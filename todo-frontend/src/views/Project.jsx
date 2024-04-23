@@ -9,7 +9,7 @@ import { Create } from '@mui/icons-material';
 const Project = () => {
 	// PERF: The whole component gets re-rendered when changing input somehow.
 	const { projectId } = useParams();
-	const { projects } = useContext(ProjectContext);
+	const { projects, setTriggerRefetch } = useContext(ProjectContext);
 
 	const [insertTodo, setInsertTodo] = useState(false);
 	const [input, setInput] = useState('');
@@ -22,6 +22,10 @@ const Project = () => {
 		setCurrentProject(p);
 		setProjectTitle(p?.title);
 	}, [projects])
+
+	useEffect(() => {
+		setTriggerRefetch(p => !p);
+	}, [])
 
 	const toggleTodoButton = () => setInsertTodo(p => !p);
 
@@ -112,7 +116,7 @@ const Project = () => {
 				</div>
 			</div>
 
-			{currentProject?.todoList?.map(todo => <Todo key={todo.id} project={currentProject} todo={todo} />)}
+			{currentProject?.todoList?.map(todo => <Todo key={todo.id} project={currentProject} todoId={todo.id} />)}
 		</>
 	)
 }

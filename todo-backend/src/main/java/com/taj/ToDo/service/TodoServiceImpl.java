@@ -32,6 +32,8 @@ public class TodoServiceImpl implements TodoService {
 	@Override
 	public String deleteTodo(Integer id) {
 		Todo foundTodo = todoRepository.findById(id).get();
+		foundTodo.setProject(null);
+		todoRepository.save(foundTodo);
 		todoRepository.delete(foundTodo);
 		return "Todo Deleted!";
 	}

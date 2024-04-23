@@ -1,7 +1,8 @@
 .add-project-button {
-	position: absolute;
-	right: 100px;
-	bottom: 100px;
+	right: 40px;
+	top: 100px;
+	position: sticky;
+	float: right;
 	border-radius: 10px;
 }
 
