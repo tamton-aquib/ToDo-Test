@@ -1,5 +1,12 @@
 # Todo-Test
 
+Techs used:
+- Java
+- Spring Boot
+- Javascript
+- ReactJS
+- MySQL
+
 ## Installation
 
 ```bash
@@ -10,7 +17,7 @@ cd Todo
 ## Usage
 
 ```bash
-cd todo-frontent && mvn spring-boot:run
+cd todo-frontend && mvn spring-boot:run
 cd todo-backend && npm run dev
 ```
 
